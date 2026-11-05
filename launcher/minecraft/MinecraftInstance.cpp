@@ -583,24 +583,7 @@ QStringList MinecraftInstance::extraArguments()
         if (!sdlPath.isEmpty() && sdlInfo.exists())
             list.append("-Dorg.lwjgl.sdl.libname=" + sdlInfo.absoluteFilePath());
     }
-    // --- POTATO PC FPS BOOST OVERRIDE ---
-    // 1. Optimized JVM Garbage Collection arguments to prevent lag stutters
-    list.append({
-        "-XX:+UseG1GC",
-        "-XX:+ParallelRefProcEnabled",
-        "-XX:MaxGCPauseMillis=20",
-        "-XX:+UnlockExperimentalVMOptions",
-        "-XX:+DisableExplicitGC",
-        "-XX:G1NewSizePercent=30",
-        "-XX:G1MaxNewSizePercent=40",
-        "-XX:G1ReservePercent=15",
-        "-XX:G1HeapRegionSize=32m"
-    });
-
-    // 2. Assign a reliable 4GB RAM allocation limit to maximize performance
-    list.append("-Xms4G");
-    list.append("-Xmx4G");
-    // -------------------------------------
+    
 
     return list;
 }
