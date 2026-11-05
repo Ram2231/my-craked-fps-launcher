@@ -583,7 +583,8 @@ QStringList MinecraftInstance::extraArguments()
         if (!sdlPath.isEmpty() && sdlInfo.exists())
             list.append("-Dorg.lwjgl.sdl.libname=" + sdlInfo.absoluteFilePath());
     }
-    
+        list.append("-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=20 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -Xms4G -Xmx4G");
+
 
     return list;
 }
